@@ -24,6 +24,17 @@ export default defineConfig({
     build: {
         manifest: true,
         outDir: 'public/build',
+        rollupOptions: {
+            output: {
+                assetFileNames: assetInfo => {
+                    // ถ้าเป็น font awesome (webfonts) → ใส่ใน /webfonts/
+                    if (assetInfo.name && assetInfo.name.includes('fa-') && assetInfo.name.match(/\.(woff2?|eot|ttf|otf)$/)) {
+                        return 'webfonts/[name][extname]';
+                    }
+                    return 'assets/[name]-[hash][extname]';
+                }
+            }
+        }
     },
     optimizeDeps: {
         include: ['@nivo/bar', '@nivo/pi', '@nivo/core'],
