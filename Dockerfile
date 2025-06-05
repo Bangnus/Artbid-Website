@@ -64,7 +64,9 @@ RUN userdel -r ubuntu
 RUN groupadd --force -g $WWWGROUP sail
 RUN useradd -ms /bin/bash --no-user-group -g $WWWGROUP -u 1337 sail
 
+
 COPY . /var/www/html
+RUN npm install && npm run build
 RUN composer install --no-dev --optimize-autoloader
 RUN chown -R sail:$WWWGROUP /var/www/html
 
