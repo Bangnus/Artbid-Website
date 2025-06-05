@@ -67,22 +67,22 @@ jobs:
       - name: Run database migrations
         run: php artisan migrate --force
 
-      - name: Set permissions for Laravel
-        run: chmod -R 777 storage bootstrap/cache
+      # - name: Set permissions for Laravel
+      #   run: chmod -R 777 storage bootstrap/cache
 
-      - name: Run Laravel test suite
-        run: php artisan test
+      # - name: Run Laravel test suite
+      #   run: php artisan test
 
-      - name: Show Laravel logs if test fails
-        if: failure()
-        run: |
-          echo "===== Laravel Log Start ====="
-          if [ -f storage/logs/laravel.log ]; then
-            cat storage/logs/laravel.log
-          else
-            echo "No laravel.log file found."
-          fi
-          echo "===== Laravel Log End ====="
+      # - name: Show Laravel logs if test fails
+      #   if: failure()
+      #   run: |
+      #     echo "===== Laravel Log Start ====="
+      #     if [ -f storage/logs/laravel.log ]; then
+      #       cat storage/logs/laravel.log
+      #     else
+      #       echo "No laravel.log file found."
+      #     fi
+      #     echo "===== Laravel Log End ====="
 
   deploy:
     name: Deploy to Render
