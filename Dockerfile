@@ -73,6 +73,6 @@ COPY php.ini /etc/php/8.4/cli/conf.d/99-sail.ini
 EXPOSE 8000/tcp
 EXPOSE 5173/tcp
 
-CMD ["php", "artisan", "serve", "--host=0.0.0.0", "--port=8080"]
+CMD ["php", "artisan", "serve", "--host=0.0.0.0", "--port=8000"]
 
 # rebuild to clear start-container
