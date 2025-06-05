@@ -40,7 +40,7 @@
                         <x-content-card.card image="images/bg.png" :type="'live'" title="Live">
                             <div class="space-y-1 ">
                                 <p class="text-[18px] text-textprimary font-primaryMedium">
-                                    123456789101112131egerhrhre
+                                    123456789101112131egerhrhrewdwdw
                                 </p>
                                 <div class="text-[16px] font-primaryMedium">
                                     <p class="text-textsecondary">Artist : <span class="text-textprimary">Pablo
