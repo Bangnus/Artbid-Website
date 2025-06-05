@@ -13,7 +13,8 @@
                 </p>
                 <span class="text-[16px] text-textsecondary font-primaryMedium lg:text-[20px]">Unlock your imagination with
                     our carefully
-                    curated collection of original artworks.</span>
+                    curated collection of original artworks.
+                </span>
                 <x-content-button.fullbutton class="py-[12px] md:max-w-[170px] rounded-xl mt-5">
                     Start Bidding
                 </x-content-button.fullbutton>
