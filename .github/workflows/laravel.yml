@@ -2,7 +2,7 @@ name: Laravel CI/CD to Render
 
 on:
   push:
-    branches: [ "master" ]  # เปลี่ยนเป็น branch ที่ใช้ deploy
+    branches: [ "master" ]
 
 jobs:
   laravel-tests:
@@ -51,6 +51,8 @@ jobs:
         run: |
           cp .env.example .env
           echo "APP_ENV=testing" >> .env
+          echo "APP_DEBUG=true" >> .env
+          echo "APP_URL=http://127.0.0.1:8000" >> .env
           echo "DB_CONNECTION=pgsql" >> .env
           echo "DB_HOST=127.0.0.1" >> .env
           echo "DB_PORT=5432" >> .env
@@ -67,6 +69,17 @@ jobs:
 
       - name: Run Laravel test suite
         run: php artisan test
+
+      - name: Show Laravel logs if test fails
+        if: failure()
+        run: |
+          echo "===== Laravel Log Start ====="
+          if [ -f storage/logs/laravel.log ]; then
+            cat storage/logs/laravel.log
+          else
+            echo "No laravel.log file found."
+          fi
+          echo "===== Laravel Log End ====="
 
   deploy:
     name: Deploy to Render
