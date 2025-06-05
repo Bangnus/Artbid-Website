@@ -65,7 +65,9 @@ RUN groupadd --force -g $WWWGROUP sail
 RUN useradd -ms /bin/bash --no-user-group -g $WWWGROUP -u 1337 sail
 
 COPY . /var/www/html
+RUN composer install --no-dev --optimize-autoloader
 RUN chown -R sail:$WWWGROUP /var/www/html
+
 
 COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 COPY php.ini /etc/php/8.4/cli/conf.d/99-sail.ini
