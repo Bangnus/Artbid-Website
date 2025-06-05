@@ -75,5 +75,4 @@ EXPOSE 5173/tcp
 
 CMD ["php", "artisan", "serve", "--host=0.0.0.0", "--port=8080"]
 
-# force rebuild v1
-
+# rebuild to clear start-container
