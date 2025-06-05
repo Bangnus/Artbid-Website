@@ -1,6 +1,10 @@
 {{-- @php
-    $color = $badgeColor;
+$color = $badgeColor;
 @endphp --}}
+{{-- @php
+    dd($badgeColor);
+@endphp --}}
+
 <div
     class="card overflow-visible  shadow-[0_2px_15px_rgba(0,0,0,0.10)]   pb-0 rounded-2xl   mb-5 flex flex-col min-h-[485px] ">
     <div class="relative">
@@ -10,7 +14,7 @@
         </div>
 
         <div class="absolute top-5 left-0 w-full px-3 flex items-center justify-between ">
-            <div class=" {{ $badgeColor }} text-white px-3 py-1 rounded-md text-sm">
+            <div class=" {{ $badgeColor() }} text-white px-3 py-1 rounded-md text-sm">
                 <p>{{$title}}</p>
             </div>
             <i class="fa-regular fa-heart text-textprimary text-[20px] bg-white rounded-full p-1.5 cursor-pointer"></i>
