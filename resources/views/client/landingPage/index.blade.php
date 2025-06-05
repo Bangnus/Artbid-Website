@@ -89,10 +89,8 @@
                     <div class="swiper-slide">
                         <x-content-card.card image="images/art1.png" type="live" title="Live">
                             <div class="space-y-1">
-                                <p class="text-[18px] text-textprimary font-primaryMedium">Herman Conrad (1957) -
-                                    Battaglia
-                                    di
-                                    Trafalgar</p>
+                                <p class="text-[18px] text-textprimary font-primaryMedium">Jean Paul (XX) - Landschaft mit
+                                    Schafen</p>
                                 <div class="text-[16px] font-primaryMedium">
                                     <p class="text-textsecondary">Artist : <span class="text-textprimary">Pablo
                                             Picasso</span>
