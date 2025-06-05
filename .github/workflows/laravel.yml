@@ -1,0 +1,80 @@
+name: Laravel CI/CD to Render
+
+on:
+  push:
+    branches: [ "master" ]  # เปลี่ยนเป็น branch ที่ใช้ deploy
+
+jobs:
+  laravel-tests:
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:14
+        env:
+          POSTGRES_DB: artbid_lgv1
+          POSTGRES_USER: artbid
+          POSTGRES_PASSWORD: T73IK4XOW0oIIrjdYKCEUaXh4jUSjci2
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd="pg_isready -U artbid -d artbid_lgv1"
+          --health-interval=10s
+          --health-timeout=5s
+          --health-retries=5
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.3'
+          extensions: mbstring, xml, bcmath, curl, pgsql, pdo_pgsql
+          tools: composer:v2
+
+      - name: Install Composer dependencies
+        run: composer install --prefer-dist --no-interaction --no-progress
+
+      - name: Install NPM dependencies
+        run: npm ci
+
+      - name: Build frontend assets
+        run: npm run build
+
+      - name: Prepare .env for testing
+        run: |
+          cp .env.example .env
+          echo "APP_ENV=testing" >> .env
+          echo "DB_CONNECTION=pgsql" >> .env
+          echo "DB_HOST=127.0.0.1" >> .env
+          echo "DB_PORT=5432" >> .env
+          echo "DB_DATABASE=artbid_lgv1" >> .env
+          echo "DB_USERNAME=artbid" >> .env
+          echo "DB_PASSWORD=T73IK4XOW0oIIrjdYKCEUaXh4jUSjci2" >> .env
+          echo "APP_KEY=" >> .env
+
+      - name: Generate Laravel key
+        run: php artisan key:generate --force
+
+      - name: Run database migrations
+        run: php artisan migrate --force
+
+      - name: Run Laravel test suite
+        run: php artisan test
+
+  deploy:
+    name: Deploy to Render
+    needs: laravel-tests
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/master'
+
+    steps:
+      - name: Trigger Render Deploy via Webhook
+        run: |
+          curl -X POST "${{ secrets.RENDER_DEPLOY_HOOK }}"
