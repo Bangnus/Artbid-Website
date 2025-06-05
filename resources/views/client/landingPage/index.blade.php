@@ -53,7 +53,7 @@
                     <div class="swiper-slide">
                         <x-content-card.card image="images/art2.png" type="live" title="Live">
                             <div class="space-y-1 ">
-                                <p class="text-[18px] text-textprimary font-primaryMedium">Herman Conrad (1957) -
+                                <p class="text-[18px] text-textprimary font-primaryMedium">Herman Conrad(1957) -
                                     Battaglia
                                     di
                                     Trafalgar</p>
