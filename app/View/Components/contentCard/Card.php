@@ -32,6 +32,8 @@ class Card extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.content-card.card');
+        return view('components.content-card.card', [
+            'badgeColor' => $this->badgeColor(),
+        ]);
     }
 }
