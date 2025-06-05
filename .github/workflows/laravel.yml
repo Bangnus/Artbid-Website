@@ -67,6 +67,9 @@ jobs:
       - name: Run database migrations
         run: php artisan migrate --force
 
+      - name: Set permissions for Laravel
+        run: chmod -R 777 storage bootstrap/cache
+
       - name: Run Laravel test suite
         run: php artisan test
 
