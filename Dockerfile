@@ -66,11 +66,10 @@ RUN useradd -ms /bin/bash --no-user-group -g $WWWGROUP -u 1337 sail
 
 
 COPY . /var/www/html
-RUN npm install && npm run build && php artisan optimize \
-    && composer install --no-dev --optimize-autoloader \
-    && php artisan config:clear && php artisan view:clear && php artisan route:clear \
-    && chown -R sail:$WWWGROUP /var/www/html
-
+RUN npm install && npm run build
+RUN php artisan optimize
+RUN composer install --no-dev --optimize-autoloader
+RUN chmod -R sail:$WWWGROUP /var/www/html
 
 
 COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf
