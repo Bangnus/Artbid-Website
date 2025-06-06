@@ -20,14 +20,6 @@ export default defineConfig({
             input: ['resources/css/app.css', 'resources/js/app.js'],
             refresh: true,
         }),
-        viteStaticCopy({
-            targets: [
-                {
-                    src: 'node_modules/@fortawesome/fontawesome-free/webfonts',
-                    dest: 'webfonts', // จะกลายเป็น public/build/webfonts
-                },
-            ],
-        }),
     ],
     build: {
         manifest: true,
