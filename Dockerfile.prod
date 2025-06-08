@@ -52,9 +52,11 @@ RUN groupadd --force -g $WWWGROUP sail \
 
 COPY . /var/www/html
 
-RUN composer install --no-dev --optimize-autoloader \
-    && npm install && npm run build \
-    && chown -R sail:$WWWGROUP /var/www/html
+RUN composer install --no-dev --optimize-autoloader
+RUN npm install
+RUN npm run build
+RUN chown -R sail:$WWWGROUP /var/www/html
+
 
 COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 COPY php.ini /etc/php/8.4/cli/conf.d/99-sail.ini
