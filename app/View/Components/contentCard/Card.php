@@ -21,7 +21,7 @@ class Card extends Component
     public function badgeColor()
     {
         return match ($this->type) {
-            'live' => 'bg-red-600 ',
+            'live' => 'bg-red-600',
             'upcoming' => 'bg-green-600',
             default => 'bg-gray-500',
         };
@@ -32,8 +32,6 @@ class Card extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.content-card.card', [
-            'badgeColor' => $this->badgeColor(),
-        ]);
+        return view('components.content-card.card');
     }
 }

@@ -1,5 +1,3 @@
-
-
 @extends('client.layout')
 @section('title')
     Home
@@ -7,8 +5,8 @@
 @section('content')
     <div class="space-y-[100px]">
         <div class="flex flex-col items-center flex-wrap w-full bg-white rounded-2xl md:flex md:flex-row">
-            <div class="w-4/5 md:w-1/2 flex flex-col md:pl-10">
-                <p class="text-[20px] text-textorange font-primarySemibold leading-tight lg:text-[40px]">Explore global
+            <div class="w-4/5 md:w-1/2 flex flex-col md:pl-10 py-10">
+                <p class="text-[22px] text-textorange font-primarySemibold leading-tight lg:text-[40px]">Explore global
                     masterpieces.
                     <br>Bid and collect the
                     art you fall in love with.
@@ -30,7 +28,7 @@
         <div class="bg-white px-10 py-5 rounded-2xl  text-textprimary font-primarySemibold space-y-10">
             <div class="flex items-center justify-between">
                 <p class="text-[18px] sm:text-[30px]">Currently Auctioning</p>
-                <a href="" class="text-textorange text-[12px] sm:text-[16px] font-primarySemibold">View All</a>
+                <a href="" class="text-textorange text-[14px] sm:text-[16px] font-primarySemibold">View All</a>
             </div>
 
             <div class="swiper mySwiper">
@@ -229,7 +227,7 @@
         </div>
 
         {{-- Discover Our Essence --}}
-        <div class="flex items-start mx-[100px] py-[100px]">
+        <div class="flex flex-col md:flex-row items-start gap-x-10 lg:gap-x-0  py-[100px] ">
             <div class="w-1/2 relative flex flex-col items-center">
                 <img src="{{asset('images/bg.png')}}" alt="image" class="w-[500px] h-auto rounded-xl">
                 <div
