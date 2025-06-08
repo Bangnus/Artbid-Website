@@ -55,6 +55,7 @@ COPY . /var/www/html
 RUN composer install --no-dev --optimize-autoloader
 RUN npm install
 RUN npm run build
+RUN php artisan optimize:clear
 RUN chown -R sail:$WWWGROUP /var/www/html
 
 
