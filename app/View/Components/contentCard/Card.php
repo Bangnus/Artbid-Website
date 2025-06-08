@@ -32,8 +32,8 @@ class Card extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.content-card.card')->with([
-            'badgeColor' => $this->badgeColor(),
+        return view('components.content-card.card', [
+            'badgeColor' => $this->badgeColor(), // ✅ ส่งเข้า view
         ]);
     }
 }
